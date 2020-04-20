@@ -1,0 +1,13 @@
+C:\Users\HP\source\repos\Neural Network\bin\Debug\netcoreapp3.1\Neural Network.exe
+C:\Users\HP\source\repos\Neural Network\bin\Debug\netcoreapp3.1\Neural Network.deps.json
+C:\Users\HP\source\repos\Neural Network\bin\Debug\netcoreapp3.1\Neural Network.runtimeconfig.json
+C:\Users\HP\source\repos\Neural Network\bin\Debug\netcoreapp3.1\Neural Network.runtimeconfig.dev.json
+C:\Users\HP\source\repos\Neural Network\bin\Debug\netcoreapp3.1\Neural Network.dll
+C:\Users\HP\source\repos\Neural Network\bin\Debug\netcoreapp3.1\Neural Network.pdb
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.AssemblyInfo.cs
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.dll
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.pdb
+C:\Users\HP\source\repos\Neural Network\obj\Debug\netcoreapp3.1\Neural Network.genruntimeconfig.cache

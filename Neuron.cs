@@ -6,25 +6,41 @@ namespace Neural_Network
     public class Neuron
     {
         public List<double> Weights { get; }         //Список весов
+        public List<double> Inputs { get; }
         public NeuronType NeuronType { get; }             //Тип нейрона
         public double Output { get; private set; }  //Храним выходной результат(после функции активации)
+        public double Delta { get; private set; }
 
 
         public Neuron(int inputCount, NeuronType type = NeuronType.Normal)
         {
             //Проверка
-            if(inputCount < 1)
+            if (inputCount < 1)
             {
                 throw new Exception("Недопустимое число входов");
             }
 
             NeuronType = type;
             Weights = new List<double>();
+            Inputs = new List<double>();
 
-            for(int i = 0; i < inputCount; i++)
+            InitWeightsRandomValue(inputCount);
+        }
+
+        private void InitWeightsRandomValue(int inputCount)
+        {
+            var rnd = new Random();
+            for (int i = 0; i < inputCount; i++)
             {
-                //Для начала/Требует исправления
-                Weights.Add(1);
+                if (NeuronType == NeuronType.Input)
+                {
+                    Weights.Add(1);
+                }
+                else
+                {
+                    Weights.Add(rnd.NextDouble());
+                }
+                Inputs.Add(0);
             }
         }
 
@@ -38,13 +54,26 @@ namespace Neural_Network
                 throw new Exception("Недопустимое число входов");
             }
 
+            for(int i = 0; i < inputs.Count; i++)
+            {
+                Inputs[i] = inputs[i];
+            }
+
             var sum = 0.0;
             for (int i = 0; i < inputs.Count; i++)
             {
                 sum += inputs[i] * Weights[i];
             }
 
-            Output = Sigmoid(sum);
+            if (NeuronType != NeuronType.Input)
+            {
+                Output = Sigmoid(sum);
+            }
+            else
+            {
+                Output = sum;
+            }
+
             return Output;
         }
 
@@ -56,12 +85,31 @@ namespace Neural_Network
             return result;
         }
 
-        public void SetWeights(params double[] weights)
+        //Производная сигмоидальной функции
+        private double SigmoidDx(double x)
         {
-            //TODO: Удалить после добаления возможности обучения
-            for(int i = 0 ; i < weights.Length; i++)
+            var sigmoid = Sigmoid(x);
+            var result = sigmoid / (1 - sigmoid);
+            return result;
+        }
+
+        //Метод для вычисления новых весов
+        public void Learn(double error, double learningRate)
+        {
+            if(NeuronType == NeuronType.Input)
             {
-                Weights[i] = weights[i];
+                return;
+            }
+
+            Delta = error * SigmoidDx(Output);
+
+            for(int i = 0; i < Weights.Count; i++)
+            {
+                var weight = Weights[i];
+                var input = Inputs[i];
+
+                var newWeight = weight - input * Delta * learningRate;
+                Weights[i] = newWeight;
             }
         }
 
